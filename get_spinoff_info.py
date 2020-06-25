@@ -36,7 +36,7 @@ def get_all_hrefs(SEARCH_KEYWORD: str, PAGE_NUMBER: int) -> list:
     return spinoff_articles_list
 
 
-def iterate_avail_articles():
+def iterate_avail_articles() -> list:
     total_spinoff_articles = []
     page_num = 1
     while True:
@@ -62,5 +62,5 @@ def iterate_avail_articles():
 # get_all_hrefs("인적+분할", 1)
 # get_all_hrefs("인적분할", 1)
 
-iterate_avail_articles()
+# iterate_avail_articles()
 
