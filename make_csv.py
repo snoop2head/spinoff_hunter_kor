@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-# TODO: MAKE II TO FIND MOST RECENT FILE
+# TODO: SELECT MOST RECENT FILE IN THE FOLDER
 def make_xlsx_to_csv(input_file_name, excel_folder_path, csv_folder_path):
     data_xls = pd.read_excel(
         f"{excel_folder_path}/{input_file_name}.xlsx", "퀀트데이터", index_col=None
