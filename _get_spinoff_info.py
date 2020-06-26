@@ -25,16 +25,31 @@ def count_spinoffs(companies: list, articles: list) -> dict:
     return sum_frequency
 
 
-def get_spinoff_info(bundle: str) -> dict:
-    bundle.lower()
+def get_spinoff_info(market: str, search_keyword: str) -> dict:
+    market = market.lower()
     # fetching lists for the main function
-    spinoff_articles_list = iterate_avail_articles("인적분할")
+    spinoff_articles_list = iterate_avail_articles(search_keyword)
 
-    if bundle == "kospi":
+    """
+    # test purpose
+    spinoff_articles_list = [
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006241133130960107154&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006241132074760108114&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006231009195400102978&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006220912030400103218&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006220946501400103784&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006191422511360102743&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006191355276840108314&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006171057167720103744&lcode=00&page=1&svccode=00",
+        "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006170857397900106488&lcode=00&page=1&svccode=00",
+    ]
+    """
+
+    if market == "kospi":
         companies = yield_kospi_companies()
-    elif bundle == "kosdaq":
+    elif market == "kosdaq":
         companies = yield_kosdaq_companies()
-    elif bundle == "all":
+    elif market == "all":
         companies = yield_public_companies()
     else:
         print("choose out of kospi, kosdaq, all")
@@ -49,24 +64,3 @@ def get_spinoff_info(bundle: str) -> dict:
     print("SPINOFF DICTIONARY FORMED!")
     print(sorted_spinoff_dict)
     return sorted_spinoff_dict
-
-
-"""
-from crawl_spinoff_info import iterate_avail_articles
-from extract_company_list import yield_kospi_companies
-
-spinoff_articles_list = [
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006241133130960107154&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006241132074760108114&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006231009195400102978&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006220912030400103218&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006220946501400103784&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006191422511360102743&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006191355276840108314&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006171057167720103744&lcode=00&page=1&svccode=00",
-    "http://www.thebell.co.kr/free/content/ArticleView.asp?key=202006170857397900106488&lcode=00&page=1&svccode=00",
-]
-
-kospi_companies = yield_kospi_companies()
-count_spinoffs(kospi_companies, spinoff_articles_list)
-"""
