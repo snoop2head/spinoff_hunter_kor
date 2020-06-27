@@ -27,6 +27,9 @@ def wrangle_csv(input_file_name, read_csv_folder_path, write_csv_folder_path):
     # drop first two rows in the dataframe
     df = df.drop([df.index[0], df.index[1]])
 
+    # drop first column in the dataframe
+    df = df.drop([df.columns[0], df.columns[1]], axis="columns")
+
     df.to_csv(
         f"{write_csv_folder_path}/{input_file_name}.csv", encoding="utf-8", index=False
     )
