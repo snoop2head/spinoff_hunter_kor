@@ -9,14 +9,17 @@
 * 인적분할 소식이 있는 회사들의 재무 정보는 [_spinoff_data](./_spinoff_data)에 위치.
 
 ### How to Run
+* Step 1. 
+Download Quantking excel data [from website](http://www.quantking.co.kr/page/charge.php?boardid=JS_board_charge&mode=list) and move the file to [finance_data_xlsx](./finance_data_xlsx)
+
+* Step 2. Run main.py
 ```shell
 python main.py
 ```
 
 
-
 ### To Do
 
 - [x] Get the most recent file
-- [ ] Upload csv file to Google Spreadsheet since csv -> xlsx doesn't support Korean language 😭
+- [x] Upload csv file to Google Spreadsheet since csv -> xlsx doesn't support Korean language 😭
 
