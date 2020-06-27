@@ -1,5 +1,12 @@
+""" 
+Yields Quantking xlsx file to spinoff candidate companies' csv file 
+"""
+
 import pandas as pd
+
 from _get_spinoff_info import get_spinoff_info
+from select_recent import get_recent_file_name
+from make_csv import make_xlsx_to_csv, wrangle_csv
 
 
 def main(market, search_keyword, input_file_name):
@@ -41,7 +48,16 @@ def main(market, search_keyword, input_file_name):
 
 
 if __name__ == "__main__":
+    # Makes and wrangles the most recent excel file into csv file as same file name
+    excel_folder_path = "finance_data_xlsx"
+    csv_folder_path = "finance_data_csv"
+    wrangled_folder_path = "finance_data_csv_wrangled"
+    file_name = get_recent_file_name(excel_folder_path)
+
+    make_xlsx_to_csv(file_name, excel_folder_path, csv_folder_path)
+    wrangle_csv(file_name, csv_folder_path, wrangled_folder_path)
+
+    # Makes spinoff company candidates csv file on ./_spinoff_data folder
     market = "KOSPI"
     search_keyword = "인적분할"
-    input_file_name = "퀀트데이터2020.06.24"
-    main(market, search_keyword, input_file_name)
+    main(market, search_keyword, file_name)

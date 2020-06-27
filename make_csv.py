@@ -1,5 +1,10 @@
-import pandas as pd
+"""
+Makes and wrangles the most recent excel file into csv file as same file name
+./finace_data_csv_wrangled is the end point for data, whereas CSV folder is stop-by point.
+"""
 
+import pandas as pd
+from select_recent import get_recent_file_name
 
 # TODO: SELECT MOST RECENT FILE IN THE FOLDER
 def make_xlsx_to_csv(input_file_name, excel_folder_path, csv_folder_path):
@@ -27,12 +32,3 @@ def wrangle_csv(input_file_name, read_csv_folder_path, write_csv_folder_path):
     )
 
     return
-
-
-excel_folder_path = "finance_data_xlsx"
-csv_folder_path = "finance_data_csv"
-wrangled_folder_path = "finance_data_csv_wrangled"
-file_name = "퀀트데이터2020.06.24"
-
-make_xlsx_to_csv(file_name, excel_folder_path, csv_folder_path)
-wrangle_csv(file_name, csv_folder_path, wrangled_folder_path)
