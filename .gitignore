@@ -1,2 +1,5 @@
 test_folder
 __pycache__
+*.csv
+*.xlsx
+credentials.json

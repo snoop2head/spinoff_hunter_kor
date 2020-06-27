@@ -19,7 +19,4 @@ python main.py
 
 - [x] Get the most recent file
 - [ ] Upload csv file to Google Spreadsheet since csv -> xlsx doesn't support Korean language 😭
-~~- [ ] Github Action for push~~
-* Github Action is unnecassary, since I have to manually fetch financial information in the first place && command is simple to run
-
 
