@@ -7,6 +7,7 @@ import pandas as pd
 from _get_spinoff_info import get_spinoff_info
 from select_recent import get_recent_file_name
 from make_csv import make_xlsx_to_csv, wrangle_csv
+from upload_to_google_drive import upload_to_gs
 
 
 def main(market, search_keyword, input_file_name):
@@ -61,3 +62,7 @@ if __name__ == "__main__":
     market = "KOSPI"
     search_keyword = "인적분할"
     main(market, search_keyword, file_name)
+
+    # import csv file for the google spreadsheet
+    google_spreadsheet_id = "1chJ2NKHVc0gKjsMaQI1UHEPxdjneV1ZWaTGHseQvxP4"
+    upload_to_gs(google_spreadsheet_id)
