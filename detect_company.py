@@ -1,3 +1,6 @@
+"""
+Checks how many times company names appear on thebell.co.kr's scraped articles
+"""
 import requests
 from bs4 import BeautifulSoup
 import lxml

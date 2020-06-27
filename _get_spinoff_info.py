@@ -1,3 +1,7 @@
+"""
+collects spinoff information from thebell.co.kr, yields {spinoff_candidate: apperance_number} format dictionary
+"""
+
 from collections import Counter
 
 from extract_company_list import (
@@ -52,7 +56,7 @@ def get_spinoff_info(market: str, search_keyword: str) -> dict:
     elif market == "all":
         companies = yield_public_companies()
     else:
-        print("choose out of kospi, kosdaq, all")
+        print("choose out of 'kospi', 'kosdaq', 'all'")
     spinoff_dictionary = count_spinoffs(companies, spinoff_articles_list)
     sorted_spinoff_dict = {
         k: v

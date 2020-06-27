@@ -1,3 +1,7 @@
+"""
+Checks how many times company names appear on thebell.co.kr's articles searched with keyword
+"""
+
 import os
 import requests
 from bs4 import BeautifulSoup
