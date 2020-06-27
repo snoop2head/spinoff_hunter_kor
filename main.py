@@ -18,16 +18,21 @@ def main(market, search_keyword, input_file_name):
 
     # extract finance data for companies involved with spinoff event
     for spinoff_candidate in spinoff_related_companies:
-        finance_info = df.loc[df["회사명"] == spinoff_candidate]
-        spinoff_dataframes.append(finance_info)
+        df_finance_info = df.loc[df["회사명"] == spinoff_candidate]
+        if df_finance_info["업종\n(대)"].values[0] != "금융":
+            df_finance_info.insert(2, "기사등장횟수", spinoff_info[spinoff_candidate])
+            spinoff_dataframes.append(df_finance_info)
+        if df_finance_info["업종\n(대)"].values[0] == "금융":
+            finance_company = df_finance_info["회사명"].values[0]
+            print(f"{finance_company} is just finance company")
 
     # concat one-row spinoff involved companies dataframe for a csv file
-    spinoff_candidate_df = pd.concat(spinoff_dataframes)
-    print(spinoff_candidate_df)
+    df_spinoff_candidate = pd.concat(spinoff_dataframes)
+    print(df_spinoff_candidate)
 
     # save result as csv
     write_csv_folder_path = "_spinoff_data"
-    spinoff_candidate_df.to_csv(
+    df_spinoff_candidate.to_csv(
         f"{write_csv_folder_path}/{input_file_name}_spinoff.csv",
         encoding="utf-8",
         index=False,
