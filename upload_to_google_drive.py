@@ -6,9 +6,7 @@ from select_recent import get_recent_file_name
 
 def upload_to_gs(spreadsheet_id):
     # google spreadsheet API enabled credentials
-    gc = gspread.service_account(
-        filename="/Users/noopy/spinoff_hunter_kor/credentials.json"
-    )
+    gc = gspread.service_account(filename="./credentials.json")
 
     """
     # input google drive spreadsheet file name
